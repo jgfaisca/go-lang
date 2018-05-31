@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# Description: 	Install the Go programming language (>= 1.2.2)
+# Description: Install the Go programming language (>= 1.2.2)
 #
 # Author:	Jose G. Faisca <jose.faisca@gmail.com>
 #
@@ -12,10 +12,36 @@
 # export PATH=$PATH:/usr/local/go/bin
 #
 
+# operating system
+UNAME=$(uname)
+OS="null"
+if [ "$UNAME" == "Linux" ] ; then
+        OS=${UNAME,,}
+elif [ "$UNAME" == "FreeBSD" ] ; then
+        OS=${UNAME,,}
+elif [ "$UNAME" == "Darwin" ] ; then
+        OS=${UNAME,,}
+else
+       echo "invalid operating system $ARCH"
+       exit 1
+fi
+
 # system architecture
-ARCH="amd64"
-# OS
-OS="linux"
+HW=$(uname -m)
+ARCH="null"
+if [ "$HW" == "x86_64" ]; then
+        ARCH="amd64"
+elif [ "$HW" == "i386" ] || [ "$HW" == "i686" ]; then
+        ARCH="386"
+elif [ "$HW" == "armv6l" ]; then
+        ARCH="armv6l"
+elif [ "$HW" == "armv8l" ] || [ "$HW" == "armv8b" ]; then
+        ARCH="arm64"
+else
+        echo "invalid architecture $ARCH"
+        exit 2
+fi
+
 # go repository
 REPO="https://storage.googleapis.com/golang"
 # installation path
@@ -50,7 +76,7 @@ eval $CMD && rm -f $TAR_FILE
 mkdir -p $HOME/go
 mkdir -p $HOME/work
 
-# set environment
+# set PATH and environment variables
 cat $HOME/.bashrc | grep $INSTALL_PATH/go &> /dev/null
 if [ $? -ne 0 ]; then
   echo "export GOPATH=\$HOME/work" >> $HOME/.bashrc
