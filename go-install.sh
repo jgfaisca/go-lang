@@ -51,7 +51,9 @@ mkdir -p $HOME/go
 mkdir -p $HOME/work
 
 # set environment
-echo "export PATH=\$PATH\:/usr/local/go/bin" >> $HOME/.bashrc
+echo "export GOPATH=\$HOME\/work" >> $HOME/.bashrc
+echo "export GOROOT=/usr/local/go" >> $HOME/.bashrc
+echo "export PATH=\$GOROOT\/bin:\$PATH\" >> $HOME/.bashrc
 source $HOME/.bashrc
 
 # output version
