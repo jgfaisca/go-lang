@@ -51,11 +51,14 @@ mkdir -p $HOME/go
 mkdir -p $HOME/work
 
 # set environment
-echo "export PATH=\$PATH\:/usr/local/go/bin" >> $HOME/.bashrc
-echo "export GOPATH=\$HOME\/work" >> $HOME/.bashrc
-echo "export GOROOT=$INSTALL_PATH/go" >> $HOME/.bashrc
-echo "export PATH=\$PATH\:\$GOROOT\/bin" >> $HOME/.bashrc
-source $HOME/.bashrc
+cat $HOME/.bashrc | grep $INSTALL_PATH/go
+if [ $? -ne 0 ]; then
+  echo "export PATH=\$PATH\:/usr/local/go/bin" >> $HOME/.bashrc
+  echo "export GOPATH=\$HOME\/work" >> $HOME/.bashrc
+  echo "export GOROOT=$INSTALL_PATH/go" >> $HOME/.bashrc
+  echo "export PATH=\$PATH\:\$GOROOT\/bin" >> $HOME/.bashrc
+  source $HOME/.bashrc
+fi
 
 # output version
 go version
