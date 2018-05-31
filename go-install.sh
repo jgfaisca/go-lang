@@ -19,7 +19,7 @@ OS="linux"
 # go repository
 REPO="https://storage.googleapis.com/golang"
 # installation path
-INSTALL_PATH="/usr/local/"
+INSTALL_PATH="/usr/local"
 # go version
 VERSION=$1
 VERSION=${VERSION:-"1.10.2"}
