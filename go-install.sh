@@ -74,14 +74,13 @@ eval $CMD && rm -f $TAR_FILE
 
 # create dirs
 mkdir -p $HOME/go
-mkdir -p $HOME/work
 
 # set PATH and environment variables
 cat $HOME/.bashrc | grep $INSTALL_PATH/go &> /dev/null
 if [ $? -ne 0 ]; then
   echo " " >> $HOME/.bashrc
   echo "# Go programming language" >> $HOME/.bashrc
-  echo "export GOPATH=\$HOME/work" >> $HOME/.bashrc
+  echo "export GOPATH=\$HOME/go" >> $HOME/.bashrc
   echo "export GOROOT=$INSTALL_PATH/go" >> $HOME/.bashrc
   echo "export PATH=\$PATH:\$GOROOT/bin" >> $HOME/.bashrc
   source $HOME/.bashrc
