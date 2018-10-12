@@ -87,7 +87,9 @@ if [ $? -ne 0 ]; then
 fi
 
 # print version
-echo ""
+echo " "
 $INSTALL_PATH/go/bin/go version
+echo "GOPATH=$GOPATH"
+echo "GOROOT=$GOROOT"
 
 exit 0
