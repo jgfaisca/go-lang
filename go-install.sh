@@ -85,7 +85,7 @@ if [ $? -ne 0 ]; then
   source $HOME/.bashrc
 fi
 
-# output version
-go version
+# print version
+$INSTALL_PATH/go/bin/go version
 
 exit 0
