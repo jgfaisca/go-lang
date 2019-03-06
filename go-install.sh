@@ -83,13 +83,11 @@ if [ $? -ne 0 ]; then
   echo "export GOPATH=\$HOME/go" >> $HOME/.bashrc
   echo "export GOROOT=$INSTALL_PATH/go" >> $HOME/.bashrc
   echo "export PATH=\$PATH:\$GOROOT/bin" >> $HOME/.bashrc
-  source $HOME/.bashrc
+  echo "export PATH=\$PATH:\$GOPATH/bin" >> $HOME/.bashrc
 fi
 
 # print version
 echo " "
 $INSTALL_PATH/go/bin/go version
-echo "GOPATH=$GOPATH"
-echo "GOROOT=$GOROOT"
 
 exit 0
