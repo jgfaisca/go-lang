@@ -20,6 +20,6 @@ $ go version
 
 ````
 $ exit
-$ su <username>
+$ su <user_name>
 $ cd $HOME
 ````
