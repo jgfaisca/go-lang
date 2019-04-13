@@ -22,7 +22,7 @@ elif [ "$UNAME" == "FreeBSD" ] ; then
 elif [ "$UNAME" == "Darwin" ] ; then
         OS=${UNAME,,}
 else
-       echo "invalid operating system $ARCH"
+       echo "Error: invalid operating system $ARCH"
        exit 1
 fi
 
@@ -38,7 +38,7 @@ elif [ "$HW" == "armv6l" ]; then
 elif [ "$HW" == "armv8l" ] || [ "$HW" == "armv8b" ]; then
         ARCH="arm64"
 else
-        echo "invalid architecture $ARCH"
+        echo "Error: invalid architecture $ARCH"
         exit 2
 fi
 
@@ -48,7 +48,7 @@ REPO="https://storage.googleapis.com/golang"
 INSTALL_PATH="/usr/local"
 # go version
 VERSION=$1
-VERSION=${VERSION:-"1.12"}
+VERSION=${VERSION:-"1.12.4"}
 
 if [ $# -eq 1 ]; then
    VERSION=$1
